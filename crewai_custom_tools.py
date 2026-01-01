@@ -4,7 +4,7 @@ Custom CrewAI tools for ADR management and artifact storage.
 These tools integrate our existing memory and artifact systems with CrewAI.
 """
 
-from crewai_tools import tool
+from crewai.tools import tool
 from pathlib import Path
 from typing import Optional
 import yaml

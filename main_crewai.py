@@ -21,10 +21,9 @@ import sys
 from pathlib import Path
 from typing import List, Dict
 
-from crewai import Agent, Task, Crew, Process
-from langchain_community.llms import Ollama
+from crewai import Agent, Task, Crew, Process, LLM
 
-from crewai_tools import (
+from crewai_custom_tools import (
     create_adr_tool,
     list_adrs_tool,
     save_artifact_tool,
@@ -102,7 +101,7 @@ class CrewAITeam:
         print("AI SOFTWARE ENGINEERING TEAM - CrewAI Implementation")
         print("=" * 80 + "\n")
 
-    def create_llm(self, model: str) -> Ollama:
+    def create_llm(self, model: str) -> LLM:
         """
         Create Ollama LLM instance.
 
@@ -112,8 +111,8 @@ class CrewAITeam:
         Returns:
             Ollama instance
         """
-        return Ollama(
-            model=model,
+        return LLM(
+            model=f"ollama/{model}",
             base_url=self.settings.OLLAMA_HOST
         )
 
@@ -493,7 +492,7 @@ class CrewAITeam:
             tasks=tasks,
             process=Process.sequential,  # Execute in order (like our state machine)
             verbose=True,
-            memory=True  # Enable memory across tasks
+            memory=False  # Avoid OpenAI-embedding dependency for local runs
         )
         print("✓ Crew assembled\n")
 
