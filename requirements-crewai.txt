@@ -1,0 +1,24 @@
+# CrewAI Implementation Requirements
+# Install with: pip install -r requirements-crewai.txt
+
+# CrewAI framework
+crewai==0.28.8
+crewai-tools==0.1.6
+
+# LangChain for LLM integration
+langchain==0.1.9
+langchain-community==0.0.20
+
+# Core dependencies (shared with custom implementation)
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# YAML support for ADRs
+pyyaml==6.0.1
+
+# Utilities
+python-dotenv==1.0.0
+httpx==0.26.0
+
+# Optional but recommended
+colorama==0.4.6  # For colored terminal output
